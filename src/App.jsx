@@ -12,13 +12,9 @@ function App() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        console.log("endpoints started");
         const responses = await handleApiCalls(endpoints);
-        console.log("endpoints continue");
         const jsonData = await Promise.all(responses.map((res) => res.json()));
-        console.log("endpoints fetched");
 
-        // 
         setData(jsonData.map((item) => item.db.name));
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -26,7 +22,6 @@ function App() {
     };
 
     fetchData();
-
   }, []);
 
   return (
